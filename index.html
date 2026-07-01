@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме | Агафонов Павел Романович</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #e0e0e0;
+            --accent-color: #00ff88;
+            --link-color: #00aaff;
+            --card-bg: #141414;
+            --border-color: #2a2a2a;
+            --hover-color: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Courier New', monospace;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: var(--card-bg);
+            padding: 50px 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0, 255, 136, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--accent-color);
+            font-size: 2.8em;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1em;
+            margin-top: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .subtitle::before {
+            content: '▸ ';
+            color: var(--accent-color);
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: border-color 0.3s;
+        }
+
+        section:hover {
+            border-color: var(--accent-color);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-top: 0;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 1.1em;
+        }
+
+        h2::before {
+            content: '◆ ';
+            color: var(--accent-color);
+            font-size: 0.8em;
+        }
+
+        p {
+            color: #bbb;
+            margin-top: 10px;
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .interest-tag {
+            background: transparent;
+            padding: 12px 10px;
+            text-align: center;
+            border-radius: 6px;
+            font-weight: 400;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            border: 1px solid var(--border-color);
+            color: #aaa;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .interest-tag:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background: rgba(0, 255, 136, 0.05);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .project-item {
+            margin-bottom: 20px;
+            padding: 18px 20px;
+            border-left: 3px solid var(--accent-color);
+            background: rgba(0, 255, 136, 0.02);
+            border-radius: 0 8px 8px 0;
+            transition: background 0.3s;
+        }
+
+        .project-item:hover {
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-item h3 {
+            margin: 0 0 8px 0;
+            color: #fff;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .project-item p {
+            margin: 0 0 10px 0;
+            color: #999;
+            font-size: 0.95em;
+        }
+
+        .project-link {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 400;
+            display: inline-block;
+            padding: 6px 16px;
+            border: 1px solid var(--link-color);
+            border-radius: 4px;
+            font-size: 0.85em;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .project-link:hover {
+            background: var(--link-color);
+            color: #0a0a0a;
+            text-decoration: none;
+            box-shadow: 0 0 30px rgba(0, 170, 255, 0.15);
+        }
+
+        .contact-info {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .contact-info li {
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: all 0.3s;
+            color: #aaa;
+        }
+
+        .contact-info li:hover {
+            border-color: var(--accent-color);
+            background: rgba(0, 255, 136, 0.03);
+        }
+
+        .contact-info strong {
+            color: var(--accent-color);
+            font-weight: 400;
+            margin-right: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 10px; margin: 10px; }
+            h1 { font-size: 2em; }
+            header { padding: 30px 15px; }
+            section { padding: 20px; }
+            .interests-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Агафонов Павел</h1>
+            <div class="subtitle">Разработчик · Исследователь</div>
+        </header>
+
+        <section id="about">
+            <h2>О себе</h2>
+            <p>Увлекаюсь технологиями и программированием. Постоянно развиваю навыки в разработке, совмещая разные подходы. Интересуюсь криптографией, безопасностью и низкоуровневым программированием.</p>
+        </section>
+
+        <section id="interests">
+            <h2>Интересы и навыки</h2>
+            <div class="interests-grid">
+                <div class="interest-tag">Python</div>
+                <div class="interest-tag">HTML / CSS</div>
+                <div class="interest-tag">Криптография</div>
+                <div class="interest-tag">Монтаж видео</div>
+                <div class="interest-tag">3D-моделирование</div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Проекты</h2>
+            <div class="project-item">
+                <h3>RSA + Diffie-Hellman</h3>
+                <p>Реализация асимметричного шифрования и протокола обмена ключами на Python. Графический интерфейс, модульная архитектура.</p>
+                <a class="project-link" href="https://github.com/PavelAgafonov18/RSA/commit/0b4526dbec967b6c5e5b675277dc25da5193c957" target="_blank">Посмотреть на GitHub →</a>
+            </div>
+        </section>
+
+        <section id="contacts">
+            <h2>Контакты</h2>
+            <ul class="contact-info">
+                <li><strong>Email:</strong> koleso-m29@mail.ru</li>
+                <li><strong>Telegram:</strong> @AnPad8</li>
+                <li><strong>GitHub:</strong> github.com/PavelAgafonov18</li>
+            </ul>
+        </section>
+    </div>
+
+</body>
+</html>
